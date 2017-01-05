@@ -21,7 +21,7 @@ namespace Homework_Lesson_51
 
             for (int i = 0; i < bigArray.Length; i++)
             {
-                bigArray[i] = rnd.Next(0,500);
+                bigArray[i] = rnd.Next(0,maxNum);
                 Console.Write(bigArray[i] + ", ");
                 if (i%10==0 && i!=0)
                 {
