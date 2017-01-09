@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function init() {
+            var div1 = document.getElementById("div1");
+            var s = '<table>';
+            for (var i = 1; i < 11; i++) {
+                s += '<tr>';
+                for (var j = 1; j < 11; j++) {
+                    var x = (j*i);
+                    s += '<td ' + (x%7==0? '"background-color:red;"') + '>' + x + '</td>';
+                }
+                s += '</tr>';
+            }
+            s+='</table>';
+            div1.innerHTML = s;
+            }
+
+        
+
+
+    </script>
+
+    <style>
+        table, th, td {
+            border: 3px solid green;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th {
+            background-color: gold;
+            color: blue;
+        }
+
+        table tr:nth-child(even) {
+            background-color: aqua;
+        }
+
+        td {
+            background-color: #a59f2f;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        p {
+            color: forestgreen;
+            border-color: aliceblue;
+            border-left-color: gold;
+        }
+    </style>
+</head>
+<body onload ="init()" style="font-family:'Comic Sans MS';color:brown;font-size:200%;">
+    <a href="https://www.youtube.com/watch?v=YfpDSNNgYhI">Yippee ki-yay, motherfucker!</a>
+    
+    <div id="div1"> </div>
+
+
+</body>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Sum</th>
+        <th>Ref. Num.</th>
+    </tr>
+    <tr>
+        <td>21/12/1983</td>
+        <td rowspan="2">$15000</td>
+        <td>#039682331</td>
+    </tr>
+    <tr>
+        <td>07/01/1977</td>
+        <td>#0368814141</td>
+    </tr>
+    <tr>
+        <td>04/12/1984</td>
+        <td>$10</td>
+        <td>#200091551</td>
+    </tr>
+    <tr>
+        <td>04/10/2014</td>
+        <td>$1</td>
+        <td>#28/463514</td>
+    </tr>
+    <tr>
+        <td>03/09/2012</td>
+        <td colspan="2">$15</td>
+
+    </tr>
+</table>
+
+
+</html>

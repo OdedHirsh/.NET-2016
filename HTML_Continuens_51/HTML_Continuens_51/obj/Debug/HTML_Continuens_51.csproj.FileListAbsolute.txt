@@ -1,0 +1,6 @@
+c:\users\aviad\documents\visual studio 2013\Projects\HTML_Continuens_51\HTML_Continuens_51\bin\HTML_Continuens_51.dll.config
+c:\users\aviad\documents\visual studio 2013\Projects\HTML_Continuens_51\HTML_Continuens_51\bin\HTML_Continuens_51.dll
+c:\users\aviad\documents\visual studio 2013\Projects\HTML_Continuens_51\HTML_Continuens_51\bin\HTML_Continuens_51.pdb
+c:\users\aviad\documents\visual studio 2013\Projects\HTML_Continuens_51\HTML_Continuens_51\obj\Debug\HTML_Continuens_51.dll
+c:\users\aviad\documents\visual studio 2013\Projects\HTML_Continuens_51\HTML_Continuens_51\obj\Debug\HTML_Continuens_51.pdb
+c:\users\aviad\documents\visual studio 2013\Projects\HTML_Continuens_51\HTML_Continuens_51\obj\Debug\HTML_Continuens_51.csprojResolveAssemblyReference.cache
