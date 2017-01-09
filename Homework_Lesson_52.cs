@@ -103,7 +103,7 @@ namespace HomeWork_Lesson_52
                 {
                     if (looking == array[i, j])
                     {
-                        Console.WriteLine("FOUND");
+                        Console.WriteLine("FOUND at [{0}][{1}]",i,j);
                         return;
                     }
                     else if (looking > array[i, j])
