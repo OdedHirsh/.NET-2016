@@ -97,22 +97,32 @@ namespace HomeWork_Lesson_52
                 return;
             }
 
-            for (int i = 0; i < size;)
+            for (int i = 0; i < size; )
             {
-                for (int j = size-1; j > 0;)
+                for (int j = size - 1; j > 0; )
                 {
                     if (looking == array[i, j])
                     {
                         Console.WriteLine("FOUND");
                         return;
                     }
-                    else if (looking>array[i,j])
+                    else if (looking > array[i, j])
                     {
                         i++;
+                        if (i>9)
+                        {
+                            Console.WriteLine("number not found");
+                            return;
+                        }
                     }
                     else
                     {
                         j--;
+                        if (j < 0)
+                        {
+                            Console.WriteLine("number not found");
+                            return;
+                        }
                     }
                 }
             }
