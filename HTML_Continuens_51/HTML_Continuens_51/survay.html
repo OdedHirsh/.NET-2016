@@ -2,48 +2,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <script>
+        function btnStart() {            
+            $("#form").fadeIn("slow");
+        }
+
+    </script>
 </head>
-<body>
+<body style="background:url(animated-gifs-of-fighting-game-backgrounds-25.gif);background-size:cover; color:gold; text-align:center; font-size:16px ">
     <h1>The "Uzi" Survay</h1>
-    Please answer the following question as best you feel
-    <br /><br /><br />
+    Please answer the following question as best you feel - Note answers are not organized by good to bad order
+    <br />
+    <button onclick="btnStart()">Start</button>
+    <br />
     <hr />
-    <form>
-        <p ><ins>1) How much did you enjoy Uzi in your course?</ins></p>
-        <input type="radio" name="Q1" value="1" checked />Very Much<br />
-        <input type="radio" name="Q1" value="2" />Was Delightful<br />
-        <input type="radio" name="Q1" value="3" />Nice :)<br />
-        <input type="radio" name="Q1" value="4" checked />Nice :(<br />
-        <input type="radio" name="Q1" value="5" />Fucking Uzi<br />
-        <br />
-        <br />
-        <p><ins>2) Do you feel Uzi has contributed to your learning process?</ins></p>
-        <input type="radio" name="Q1" value="1" checked />Very Much<br />
-        <input type="radio" name="Q1" value="2" />Very Healpful<br />
-        <input type="radio" name="Q1" value="3" />I Think so<br />
-        <input type="radio" name="Q1" value="4" checked />I'm Not sure<br />
-        <input type="radio" name="Q1" value="5" />Fucking Uzi<br />
-        <br />
-        <br />
-        <p><ins>3) Could you managed to complete the course without Uzi?</ins></p>
-        <input type="radio" name="Q1" value="5" checked />Very Much<br />
-        <input type="radio" name="Q1" value="4" />Of Course<br />
-        <input type="radio" name="Q1" value="3" />In A Jiffy<br />
-        <input type="radio" name="Q1" value="2" checked />No<br />
-        <input type="radio" name="Q1" value="1" />Fucking Uzi<br />
-        <br />
-        <br />
-        <p><ins>4) Would you recommended Uzi to a nother person?</ins></p>
-        <input type="radio" name="Q1" value="1" checked />Very Much<br />
-        <input type="radio" name="Q1" value="2" />Maybe<br />
-        <input type="radio" name="Q1" value="3" />Think'About It<br />
-        <input type="radio" name="Q1" value="4" checked />Dont Count On It<br />
-        <input type="radio" name="Q1" value="5" />Fucking Uzi<br />
-        <br />
-        <br />
+    <div id="form" style="display:none">
+        <form>
+            <p><ins>1) How much did you enjoy Uzi in your course?</ins></p>
+            <input type="radio" name="Q1" value="2" />Very Much<br />
+            <input type="radio" name="Q1" value="1" />Was Delightful<br />
+            <input type="radio" name="Q1" value="3" />Nice :)<br />
+            <input type="radio" name="Q1" value="4" />Nice :(<br />
+            <input type="radio" name="Q1" value="5" />Fucking Uzi<br />
+            <br />
 
-    </form>
+            <p><ins>2) Do you feel Uzi has contributed to your learning process?</ins></p>
+            <input type="radio" name="Q2" value="2" />Very Much<br />
+            <input type="radio" name="Q2" value="1" />Very Healpful<br />
+            <input type="radio" name="Q2" value="3" />I Think So<br />
+            <input type="radio" name="Q2" value="4" />I'm Not Sure<br />
+            <input type="radio" name="Q2" value="5" />Fucking Uzi<br />
 
+            <br />
+            <p><ins>3) Could you managed to complete the course without Uzi?</ins></p>
+            <input type="radio" name="Q3" value="4" />Very Much<br />
+            <input type="radio" name="Q3" value="2" />I Think I Can, I Think I Can...<br />
+            <input type="radio" name="Q3" value="3" />In A Jiffy<br />
+            <input type="radio" name="Q3" value="1" />No Way Hoze<br />
+            <input type="radio" name="Q3" value="5" />Fucking Uzi<br />
+
+            <br />
+            <p><ins>4) Would you recommended Uzi to a nother person?</ins></p>
+            <input type="radio" name="Q4" value="1" />Very Much<br />
+            <input type="radio" name="Q4" value="2" />Maybe<br />
+            <input type="radio" name="Q4" value="3" />Think'About It<br />
+            <input type="radio" name="Q4" value="4" />Dont Count On It<br />
+            <input type="radio" name="Q4" value="5" />Fucking Uzi<br />
+
+            <br />
+            <input type="submit" value="Submit Form" style="" />
+
+
+
+        </form>
+    </div>
 
 </body>
 </html>

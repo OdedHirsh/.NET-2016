@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="20279018.jpg" />
+    <Content Include="animated-gifs-of-fighting-game-backgrounds-24.gif" />
+    <Content Include="animated-gifs-of-fighting-game-backgrounds-25.gif" />
     <Content Include="CSS.css" />
     <Content Include="forms.html" />
     <Content Include="nadlan\HtmlPage1.html" />
