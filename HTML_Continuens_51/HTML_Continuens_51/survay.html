@@ -2,21 +2,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script>
+
+    <script src="jquery-3.1.1.min.js"></script>
+    
+            <script>
         function btnStart() {            
+            $("#header").hide();
             $("#form").fadeIn("slow");
+            
+            
+        }
+
+
+
+        function stars(x) {
+            $("#btnSubmit").fadeIn("slow");
+            for (var i = 1; i < 6; i++) {
+                document.getElementById("star" + i).src = "empty-Gold_Star.png";
+            }
+            for (var j = 1; j <= x; j++) {
+                  document.getElementById("star"+j).src = "full-Gold_Star.png";
+            }
+            
+        }
+
+        function submit() {
+           // $("#body").hide();
+            $("#btnSubmit").hide();
+            $("#form").hide();
+            $("#ender").show();
+
         }
 
     </script>
 </head>
-<body style="background:url(animated-gifs-of-fighting-game-backgrounds-25.gif);background-size:cover; color:gold; text-align:center; font-size:16px ">
-    <h1>The "Uzi" Survay</h1>
-    Please answer the following question as best you feel - Note answers are not organized by good to bad order
-    <br />
-    <button onclick="btnStart()">Start</button>
-    <br />
-    <hr />
-    <div id="form" style="display:none">
+<body id="body" style="background:url(animated-gifs-of-fighting-game-backgrounds-24.gif);background-size:121%; color:gold; text-align:center; font-size:16px ">
+    <div id="header">
+        <h1>The "Uzi" Survey</h1>
+        Please answer the following question as best you feel - Note answers are not organized by good to bad order
+        <br />
+        <button onclick="btnStart()">Start</button>
+        <br /><hr />
+    </div>
+
+    <div id="form" style="display:none;">
         <form>
             <p><ins>1) How much did you enjoy Uzi in your course?</ins></p>
             <input type="radio" name="Q1" value="2" />Very Much<br />
@@ -28,9 +57,9 @@
 
             <p><ins>2) Do you feel Uzi has contributed to your learning process?</ins></p>
             <input type="radio" name="Q2" value="2" />Very Much<br />
-            <input type="radio" name="Q2" value="1" />Very Healpful<br />
-            <input type="radio" name="Q2" value="3" />I Think So<br />
-            <input type="radio" name="Q2" value="4" />I'm Not Sure<br />
+            <input type="radio" name="Q2" value="1" />I Think So<br />
+            <input type="radio" name="Q2" value="3" />I'm Not Sure<br />
+            <input type="radio" name="Q2" value="4" />Hell No<br />
             <input type="radio" name="Q2" value="5" />Fucking Uzi<br />
 
             <br />
@@ -50,12 +79,25 @@
             <input type="radio" name="Q4" value="5" />Fucking Uzi<br />
 
             <br />
-            <input type="submit" value="Submit Form" style="" />
-
-
-
+            <p><ins style="font-size:16px;font-family:'Comic Sans MS'">1) Please rate my survey!!!</ins></p>
+            <img id="star1" onclick="stars(1)" src="empty-Gold_Star.png" style="width:48px;height:48px;" />
+            <img id="star2" onclick="stars(2)" src="empty-Gold_Star.png" style="width:48px;height:48px;" />
+            <img id="star3" onclick="stars(3)" src="empty-Gold_Star.png" style="width:48px;height:48px;" />
+            <img id="star4" onclick="stars(4)" src="empty-Gold_Star.png" style="width:48px;height:48px;" />
+            <img id="star5" onclick="stars(5)" src="empty-Gold_Star.png" style="width:48px;height:48px;" />
+            <br />
+            
+            
         </form>
     </div>
-
+    
+     <img id="btnSubmit" src="red-submit-button.png" onclick="submit()" style="display:none;width:40px;height:40px" />
+    <div id="ender" style="display:none;">
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <h1>Thank you for participating in my survey</h1>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <h3>FUCK YOU</h3>
+    </div>
 </body>
+
 </html>

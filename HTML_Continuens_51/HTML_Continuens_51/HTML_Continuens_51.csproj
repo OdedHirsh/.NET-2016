@@ -69,10 +69,14 @@
     <Content Include="animated-gifs-of-fighting-game-backgrounds-24.gif" />
     <Content Include="animated-gifs-of-fighting-game-backgrounds-25.gif" />
     <Content Include="CSS.css" />
+    <Content Include="empty-Gold_Star.png" />
     <Content Include="forms.html" />
+    <Content Include="full-Gold_Star.png" />
+    <Content Include="jquery-3.1.1.min.js" />
     <Content Include="nadlan\HtmlPage1.html" />
     <Content Include="index.html" />
     <Content Include="Patrick_Star.png" />
+    <Content Include="red-submit-button.png" />
     <Content Include="signup.aspx" />
     <Content Include="spongbob.gif" />
     <Content Include="survay.html" />
