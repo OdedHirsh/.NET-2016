@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+        function stars(x) {
+            
+            if (x > 0) {
+                document.getElementById("star1").src = "full star.png";
+            }
+            if (x > 1) {
+                document.getElementById("star2").src = "full star.png";
+            }
+            if (x > 2) {
+                document.getElementById("star3").src = "full star.png";
+            }
+            if (x > 3) {
+                document.getElementById("star4").src = "full star.png";
+            }
+            if (x > 4) {
+                document.getElementById("star5").src = "full star.png";
+            }
+
+        }
+
+
+    </script>
+
+
+</head>
+
+
+<body style="color:darkblue; text-align:center; font-size:16px ">
+    <h1>The "Uzi" Survay</h1>
+    Please answer the following question as best you feel - Note answers are not organized by good to bad order
+    <br />
+    <button onclick="btnStart()">Start</button>
+    <br />
+    <hr />
+    <div id="form" >
+        <form>
+            <p><ins>1) How much did you enjoy Uzi in your course?</ins></p>
+            <img id="star1" onclick="stars(1)" src="empty star.png" style="width:50px;height:50px;"/>
+            <img id="star2" onclick="stars(2)" src="empty star.png" style="width:50px;height:50px;" />
+            <img id="star3" onclick="stars(3)" src="empty star.png" style="width:50px;height:50px;" />
+            <img id="star4" onclick="stars(4)" src="empty star.png" style="width:50px;height:50px;" />
+            <img id="star5" onclick="stars(5)" src="empty star.png" style="width:50px;height:50px;" />
+            <br />
+
+            <p><ins>2) Do you feel Uzi has contributed to your learning process?</ins></p>
+            <input type="radio" name="Q2" value="2" />Very Much<br />
+            <input type="radio" name="Q2" value="1" />Very Healpful<br />
+            <input type="radio" name="Q2" value="3" />I Think So<br />
+            <input type="radio" name="Q2" value="4" />I'm Not Sure<br />
+            <input type="radio" name="Q2" value="5" />Fucking Uzi<br />
+
+            <br />
+            <p><ins>3) Could you managed to complete the course without Uzi?</ins></p>
+            <input type="radio" name="Q3" value="4" />Very Much<br />
+            <input type="radio" name="Q3" value="2" />I Think I Can, I Think I Can...<br />
+            <input type="radio" name="Q3" value="3" />In A Jiffy<br />
+            <input type="radio" name="Q3" value="1" />No Way Hoze<br />
+            <input type="radio" name="Q3" value="5" />Fucking Uzi<br />
+
+            <br />
+            <p><ins>4) Would you recommended Uzi to a nother person?</ins></p>
+            <input type="radio" name="Q4" value="1" />Very Much<br />
+            <input type="radio" name="Q4" value="2" />Maybe<br />
+            <input type="radio" name="Q4" value="3" />Think'About It<br />
+            <input type="radio" name="Q4" value="4" />Dont Count On It<br />
+            <input type="radio" name="Q4" value="5" />Fucking Uzi<br />
+
+            <br />
+            <input type="submit" value="Submit Form" style="" />
+
+
+
+        </form>
+    </div>
+
+</body>
+</html>
