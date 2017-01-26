@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{11125524-5F4C-4BB7-A6B3-07B554678494}</ProjectGuid>
+    <ProjectGuid>{BA7B49D5-0ABE-43C2-B0E1-7671B3E5F7E6}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -94,6 +94,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HtmlPage2.html" />
+    <Content Include="jquery-3.1.1.min.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -108,15 +110,24 @@
   <ItemGroup>
     <Content Include="HtmlPage1.html" />
     <Content Include="Patrick star.png" />
-    <Content Include="pics\image_part_001.jpg" />
-    <Content Include="pics\image_part_002.jpg" />
-    <Content Include="pics\image_part_003.jpg" />
-    <Content Include="pics\image_part_004.jpg" />
-    <Content Include="pics\image_part_005.jpg" />
-    <Content Include="pics\image_part_006.jpg" />
-    <Content Include="pics\image_part_007.jpg" />
-    <Content Include="pics\image_part_008.jpg" />
-    <Content Include="pics\image_part_009.jpg" />
+    <Content Include="pics2\image_part_001.jpg" />
+    <Content Include="pics2\image_part_002.jpg" />
+    <Content Include="pics2\image_part_003.jpg" />
+    <Content Include="pics2\image_part_004.jpg" />
+    <Content Include="pics2\image_part_005.jpg" />
+    <Content Include="pics2\image_part_006.jpg" />
+    <Content Include="pics2\image_part_007.jpg" />
+    <Content Include="pics2\image_part_008.jpg" />
+    <Content Include="pics2\image_part_009.jpg" />
+    <Content Include="pics1\image_part_001.jpg" />
+    <Content Include="pics1\image_part_002.jpg" />
+    <Content Include="pics1\image_part_003.jpg" />
+    <Content Include="pics1\image_part_004.jpg" />
+    <Content Include="pics1\image_part_005.jpg" />
+    <Content Include="pics1\image_part_006.jpg" />
+    <Content Include="pics1\image_part_007.jpg" />
+    <Content Include="pics1\image_part_008.jpg" />
+    <Content Include="pics1\image_part_009.jpg" />
     <Content Include="spongebob.png" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />

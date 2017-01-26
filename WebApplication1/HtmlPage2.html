@@ -5,7 +5,16 @@
     <meta charset="utf-8" />
     <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
     <script>
-       
+        var one = '<img id="img2" src="pics1/image_part_002.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var two = '<img id="img1" src="pics1/image_part_001.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var three = '<img id="img3" src="pics1/image_part_009.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var four = '<img id="img4" src="pics1/image_part_004.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var five = '<img id="img5" src="pics1/image_part_008.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var six = '<img id="img6" src="pics1/image_part_007.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var seven = '<img id="img7" src="pics1/image_part_006.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var eight = '<img id="img8" src="pics1/image_part_005.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var nine = '<img id="img9" src="pics1/image_part_003.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+
         function allowDrop(event) {
             event.preventDefault();
         }
@@ -20,12 +29,18 @@
             var id = event.dataTransfer.getData("id");
             event.target.appendChild(document.getElementById(id));
         }
-       
+        function click() {
+            $("#divMain").html(one+two+three+four+five+six+seven+eight+nine);
+        }
+
     </script>
 </head>
 <body style="min-width:650px;">
-    
-    <div >
+
+    <button onclick="click()">change</button>
+    <input type="button" onclick="click()" value="change2"/>
+
+    <div>
         <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:320px;height:200px;border:1px solid black;float:left;"></div>
         <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="green;width:320px;height:200px;border:1px solid black;float:left;"></div>
         <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="blue;width:320px;height:200px;border:1px solid black;float:left;"></div>
@@ -39,20 +54,12 @@
         <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)" style="brown;width:320px;height:200px;border:1px solid black;float:left;"></div>
         <br />
         <div style="float:left;clear:both;width:1000px;height:10px;border:1px solid white"></div>
-        
+
 
         <div id="divMain" ondrop="drop(event)" ondragover="allowDrop(event)" style="float:left;clear:both;width:968px;height:611px;border:1px solid black">
-            <img id="img2" src="pics1/image_part_002.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
-            <img id="img1" src="pics1/image_part_001.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
-            <img id="img3" src="pics1/image_part_009.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
-            <img id="img4" src="pics1/image_part_004.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
-            <img id="img5" src="pics1/image_part_008.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
-            <img id="img6" src="pics1/image_part_007.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
-            <img id="img7" src="pics1/image_part_006.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
-            <img id="img8" src="pics1/image_part_005.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
-            <img id="img9" src="pics1/image_part_003.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />
+            
         </div>
-        
+
     </div>
 </body>
 </html>
