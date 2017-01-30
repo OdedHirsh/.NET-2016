@@ -5,61 +5,140 @@
     <meta charset="utf-8" />
     <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
     <script>
-        var one = '<img id="img2" src="pics1/image_part_002.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
-        var two = '<img id="img1" src="pics1/image_part_001.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
-        var three = '<img id="img3" src="pics1/image_part_009.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
-        var four = '<img id="img4" src="pics1/image_part_004.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
-        var five = '<img id="img5" src="pics1/image_part_008.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
-        var six = '<img id="img6" src="pics1/image_part_007.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
-        var seven = '<img id="img7" src="pics1/image_part_006.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
-        var eight = '<img id="img8" src="pics1/image_part_005.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
-        var nine = '<img id="img9" src="pics1/image_part_003.jpg" width="320" height="200" draggable="true" ondragstart="drag(event)" />';
+        var photoNumber = 1;
+        var counter = 0;
+        var board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        function checkVictory() {
+            for (var i = 0; i < board.length; i++)
+                if (board[i] != (i + 1))
+                    return false;
+            return true;
+        }
 
         function allowDrop(event) {
             event.preventDefault();
         }
+        
+
         function drag(event) {
             event.dataTransfer.setData("id", event.target.id);
+            var parent = event.target.parentElement.id;
+            event.dataTransfer.setData("parent", parent);
         }
+
         function drop(event) {
             if (event.target.id.startsWith("img"))
                 return;
-
-            event.preventDefault();
+            var parent = event.dataTransfer.getData("parent");
+            if (event.target.id == parent)
+                return;
+            if (parent != "divMain") {
+                board[parseInt(parent.substring(3)) - 1] = 0;
+                counter--;
+            }
             var id = event.dataTransfer.getData("id");
+            if (event.target.id != "divMain") {
+                var i = parseInt(event.target.id.substring(3)) - 1;
+                if (board[i] != 0)
+                    return;
+                var imageNumber = parseInt(id.substring(3));
+                board[i] = imageNumber;
+                event.preventDefault();
+                counter++;
+                if (counter == 9) {
+                    if (checkVictory()) {
+                        $('#header').text('Very Good')
+                    } else {
+                        $('#header').text('Wrong')
+                    }
+                    
+                }
+            }
             event.target.appendChild(document.getElementById(id));
         }
-        function click() {
-            $("#divMain").html(one+two+three+four+five+six+seven+eight+nine);
+
+        function picture() {
+            $('#divMain').html('')
+            for (var i = 1; i < 10; i++) {
+                $('#divMain').append('<img class="image" id="img' + i + '" src="pics' + photoNumber + '/image_part_00' + i + '.jpg" draggable="true" ondragstart="drag(event)" />')
+            }
+        }
+        
+        function sandbox() {
+            $('#divSandbox').html('')
+            for (var i = 1; i < 10; i++) {
+                $('#divSandbox').append('<div class="dropBox" id="div' + i + '" ondrop="drop(event)" ondragover="allowDrop(event)"></div>')
+                if (i%3==0) {
+                    $('#divSandbox').append('<br />')
+                }
+            }
+
+        }
+        function picChanger() {
+            $('#divChanger').html('<img onclick="changePic(1)" src="pics1/image_part_006.jpg" width="220" height="100" style="margin:6px;" /><img onclick="changePic(2)" src="pics2/image_part_008.jpg" width="220" height="100" style="margin:5px;" />')
+
         }
 
+        function changePic(x) {
+            photoNumber = x;
+            init();
+            $('#header').text('START')
+        }
+
+        function init() {
+            counter = 0;
+            board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+            sandbox();
+            picChanger();
+            picture();
+
+        }
+
+
+
     </script>
+
+    <style>
+        #div4,#div7{
+            clear:both;
+        }
+       #divChanger,#divMain,#divSandbox,#header{
+           clear:both;
+           width:680px;
+           margin: 0 auto;
+           text-align:center;
+           
+       } 
+      .dropBox{
+            background-color: wheat;
+            border:1px solid black;
+            float:left;
+            width:224px;
+            height:140px;
+        }
+      #header{
+          font-family:'Comic Sans MS';
+          font-size:45px;
+      }
+      .image{
+        width:224px;
+        height:140px;
+
+      }
+    </style>
+
 </head>
-<body style="min-width:650px;">
+<body onload="init()" style="min-width:650px;background-color:antiquewhite">
+    
+    <h1 id="header">START</h1>
 
-    <button onclick="click()">change</button>
-    <input type="button" onclick="click()" value="change2"/>
+    <div id="divSandbox"></div>
 
-    <div>
-        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:320px;height:200px;border:1px solid black;float:left;"></div>
-        <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="green;width:320px;height:200px;border:1px solid black;float:left;"></div>
-        <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="blue;width:320px;height:200px;border:1px solid black;float:left;"></div>
-        <br />
-        <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:320px;height:200px;border:1px solid black;clear:both;float:left;"></div>
-        <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)" style="brown;width:320px;height:200px;border:1px solid black;float:left;"></div>
-        <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)" style="brown;width:320px;height:200px;border:1px solid black;float:left;"></div>
-        <br />
-        <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:320px;height:200px;border:1px solid black;clear:both;float:left;"></div>
-        <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)" style="brown;width:320px;height:200px;border:1px solid black;float:left;"></div>
-        <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)" style="brown;width:320px;height:200px;border:1px solid black;float:left;"></div>
-        <br />
-        <div style="float:left;clear:both;width:1000px;height:10px;border:1px solid white"></div>
+    <div id="divChanger"></div>
 
+    <div id="divMain" ondrop="drop(event)" ondragover="allowDrop(event)" style="height:430px;border:1px solid black;background-color:wheat;"></div>
 
-        <div id="divMain" ondrop="drop(event)" ondragover="allowDrop(event)" style="float:left;clear:both;width:968px;height:611px;border:1px solid black">
-            
-        </div>
-
-    </div>
+    
 </body>
 </html>
