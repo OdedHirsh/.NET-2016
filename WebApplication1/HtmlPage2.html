@@ -57,7 +57,10 @@
             }
             event.target.appendChild(document.getElementById(id));
         }
+        function rand(l, h) {
+            return l + Math.floor((h - l + 1) * Math.random());
 
+        }
         function picture() {
             $('#divMain').html('')
             for (var i = 1; i < 10; i++) {
