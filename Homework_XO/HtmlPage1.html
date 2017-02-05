@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script>
+
+        var gameArray = [];
+        var playersTurn = 1;
+        var playsCount = 0;
+        var gameEnd = false;
+        var X = '<img class="img2" src="pics/SpongeBob_win.png" />';
+        var O = '<img class="img2" src="pics/Patrick_Star_win.png" />';
+        var T = '<img class="img2" src="pics/Tie.png" />';
+
+
+        function drawPuzzle() {
+            $('#divPuzzle').html('');
+            for (var i = 0; i < 9; i++) {
+                $('#divPuzzle').append('<div ' + (gameEnd ? '' : 'onclick="boxClicked(' + i + ')"') + ' class="box"' + (i == 3 || i == 6 ? 'style="clear:both;"' : '') + '>' + (gameArray[i] == 1 ? '<img class="img" src="pics/SpongeBob.png" />' : (gameArray[i] == 2 ? '<img class="img" src="pics/Patrick_Star.png" />' : '')) + '</div>');
+            }
+        }
+
+        function boxClicked(click) {
+            if (gameArray[click]!=null) {
+                $('#msgDiv').html('Wrong Move');
+                return;
+            }
+            gameArray[click] = playersTurn;
+            playsCount++;
+            if (playsCount>4) {
+                winCheck(playersTurn);
+            }
+            if (playsCount == 9 && !gameEnd) {
+                $('#msgDiv').html(T+'Tie!!');
+
+                gameEnd = true;
+            }
+            drawPuzzle();
+            if (playersTurn == 1) {
+                playersTurn = 2;
+            }
+            else {
+                playersTurn = 1;
+            }
+            
+        }
+
+        function winCheck(player) {
+            if (gameArray[4] == player) {
+                if ((gameArray[0] == player && gameArray[8] == player) || (gameArray[1] == player && gameArray[7] == player) || (gameArray[2] == player && gameArray[6] == player) || (gameArray[3] == player && gameArray[5] == player)) {
+                    $('#msgDiv').html((playersTurn == 1 ? X : O) + ' wins');
+                    gameEnd = true;
+                }
+            }
+            else if (gameArray[0] == player) {
+                if ((gameArray[1] == player && gameArray[2] == player) || (gameArray[3] == player && gameArray[6] == player)) {
+                    $('#msgDiv').html((playersTurn == 1 ? X : O) + ' wins');
+                    gameEnd = true;
+                }
+            }
+            else if (gameArray[8] == player) {
+                if ((gameArray[5] == player && gameArray[2] == player) || (gameArray[7] == player && gameArray[6] == player)) {
+                    $('#msgDiv').html((playersTurn == 1 ? X : O) + ' wins');
+                    gameEnd = true;
+                }
+            }
+        }
+
+    </script>
+
+    <style>
+        .box{
+            text-align:center;
+            line-height:80px;
+            font-family:'Comic Sans MS';
+            font-size:3.5em;
+            width: 100px;
+            height: 100px;
+            border: 4px solid black;
+            float:left;
+        }
+        .img{
+            width: 100px;
+            height: 100px;
+        }
+        .img2{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body onload="drawPuzzle()">
+    <h1 style="text-align:center;font-size:4em;">Tic Tac Toe</h1>
+    <br />
+    <div id="divPuzzle" style="width:320px; margin: 0 auto;"></div>
+    <div style="clear:both;height:100px;"></div>
+    <div style="clear:both;margin:0 auto;border:1px solid white;height:200px;line-height:80px;text-align:center;font-size:4em;" id="msgDiv"></div>
+
+</body>
+</html>
