@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+
+        .page {
+            display:none;
+            width:500px;
+            height:300px;
+            margin:0 auto;
+            background-color:antiquewhite;
+        
+        }
+        .box{
+            width:100px;
+            height:100px;
+            float:left;
+        }
+
+        
+    </style>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="JavaScript.js"></script>
+    <script>
+        var divLogin, divLobby, divGame, divMessage;
+        var username, password;
+        var board = [];
+
+        function init() {
+            divLogin = document.getElementById("divLogin");
+            divLobby = document.getElementById("divLobby");
+            divGame = document.getElementById("divGame");
+            divLogin.style.display = "block";
+            divMessage = document.getElementById("divMessage");
+            var txtUserName = document.getElementById("txtUserName");
+            txtUserName.focus();
+            for (var i = 0; i < 9; i++) {
+                board[i] = 0;
+            }
+        }
+
+        function drawBoard() {
+            
+
+
+        }
+
+            function btnSignup(shouldSignup) {
+                var usr = $("#txtUserName").val();
+                var pswd = $("#txtPassword").val();
+                if (usr.length < 2 || pswd.length < 2) {
+                    divMessage.innerHTML = "UserName and Password must be at least 2 characters long ";
+                    return;
+                }
+                divMessage.innerHTML = "Please wait...";
+                $.get("api.aspx?action="+(shouldSignup? "signup" :"login")+"&username=" + usr + "&password=" + pswd, function (data, status) {
+                    if (status == "success") {
+                        if (data == "ok") {
+                            divMessage.innerHTML = "welcome " + usr + "!";
+                            $("#txtUserName").val("");
+                            $("#txtPassword").val("");
+                            username = usr;
+                            password = pswd;
+                            $('#divLogin').hide();
+                            $('#divLobby').show();
+                            getPartners();
+                        }
+                        else {
+                            divMessage.innerHTML = (shouldSignup? "username taken - try again" : "login faild");
+                        }
+
+                    }
+                    else {
+                        divMessage.innerHTML = "Network Error";
+                    }
+                });
+
+            }
+
+            function choosePartner(partner) {
+                goGetPartners = false;
+                $('#divLobby').html('Please Wait...');
+                $.get('api.aspx?action=choosePartner&username=' + username + '&password=' + password + '&partner=' + partner, function (data, status) {
+                    if (status == 'success') {
+                        if (data == "ok") {
+                            $("#divLobby").hide();
+                            $("#divGame").show();
+                            divMessage.innerHTML = "You are now playing with " + partner;
+                        }
+                    }
+
+                });
+            }
+
+
+            var goGetPartners = true;
+
+            function getPartners() {
+                if (!goGetPartners)
+                    return;
+                $.get('api.aspx?action=getPartners&username=' + username + '&password=' + password, function (data, status) {
+                    if (!goGetPartners)
+                        return;
+                    if (status == "success") {
+                        if (data.startsWith("chosen")) {
+                            var chosenBy = data.substring(6);
+                            $("#divLobby").hide();
+                            $("#divGame").show();
+                            divMessage.innerHTML = "You are now playing with "+chosenBy;
+
+                        } else {
+                            var users = data.split('&');
+                            var divLobbyString = ""
+                            for (var i = 0; i < users.length; i++) {
+                                divLobbyString += '<div onclick="choosePartner(\'' + users[i] + '\')">' + users[i] + '</div>';
+                            }
+                            $('#divLobby').html(divLobbyString);
+                            if (goGetPartners)
+                                setTimeout(function () { getPartners(); }, 1000)
+                        }}
+                })
+                
+            }
+
+            function passwordKeyPressed(e) {
+                if (e.keyCode == 13)
+                    btnSignup(false);
+                return true;
+            }
+
+            function endGame() {
+                divMessage.innerHTML = "Please Wait...";
+                $.get("api.aspx?action=endGame&username=" + username + "&password=" + password, function () {
+                    if (status=="success") {
+                        $("#divGame").hide();
+                        $("#divLobby").show();
+                        goGetPartners = true;
+                        getPartners();
+                        divMessage.innerHTML = "Game Ended";
+                    }
+                });
+
+            }
+
+    </script>
+</head>
+<body onload="init()">
+    <h1 style="text-align:center;">Tic Tac Toe</h1>
+    <div id="divMessage" style="width:500px;height:20px;margin:0 auto;text-align:center"></div>
+    <div id="divLogin" class="page">
+        <h2>Login</h2>
+        UserName: <input type="text" id="txtUserName" /><br /><br />
+        Password: <input type="password" id="txtPassword" onkeypress="return passwordKeyPressed(event)" /><br /><br />
+        <input type="button" value="Signup" onclick="btnSignup(true)" />&nbsp;
+        <input type="button" value="Login" onclick="btnSignup(false)" />
+    </div>
+    <div id="divLobby" class="page">lobby</div>
+    <div id="divGame" class="page">game
+        <br />
+        <div id="divBoard"></div>
+        <button onclick="endGame()">End Game</button>
+    </div>
+    
+    
+</body>
+</html>
