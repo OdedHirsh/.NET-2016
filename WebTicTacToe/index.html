@@ -4,30 +4,28 @@
     <title></title>
     <meta charset="utf-8" />
     <style>
-
         .page {
-            display:none;
-            width:500px;
-            height:300px;
-            margin:0 auto;
-            background-color:antiquewhite;
-        
-        }
-        .box{
-            width:100px;
-            height:100px;
-            float:left;
+            display: none;
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: antiquewhite;
         }
 
-        
+        .box {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
     </style>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="JavaScript.js"></script>
     <script>
-        var divLogin, divLobby, divGame, divMessage;
+        var divLogin, divLobby, divGame;
+        var divMessage;
         var username, password;
         var board = [];
-
+        var amIx = false;
         function init() {
             divLogin = document.getElementById("divLogin");
             divLobby = document.getElementById("divLobby");
@@ -40,129 +38,178 @@
                 board[i] = 0;
             }
         }
-
-        function drawBoard() {
-            
-
-
-        }
-
-            function btnSignup(shouldSignup) {
-                var usr = $("#txtUserName").val();
-                var pswd = $("#txtPassword").val();
-                if (usr.length < 2 || pswd.length < 2) {
-                    divMessage.innerHTML = "UserName and Password must be at least 2 characters long ";
-                    return;
+        function cellClick(i) {
+            $.get("api.aspx?action=makeMove&username=" + username + "&password=" + password + "&cell=" + i, function (data, status) {
+                if (status == "success") {
+                    if (data == "ok") {
+                        goCheckMove = true;
+                        checkMove();
+                    } else {
+                        goBackToLobby();
+                    }
+                } else {
                 }
-                divMessage.innerHTML = "Please wait...";
-                $.get("api.aspx?action="+(shouldSignup? "signup" :"login")+"&username=" + usr + "&password=" + pswd, function (data, status) {
-                    if (status == "success") {
-                        if (data == "ok") {
-                            divMessage.innerHTML = "welcome " + usr + "!";
-                            $("#txtUserName").val("");
-                            $("#txtPassword").val("");
-                            username = usr;
-                            password = pswd;
-                            $('#divLogin').hide();
-                            $('#divLobby').show();
-                            getPartners();
+            });
+        }
+        var goCheckMove = true;
+        function checkMove() {
+            $.get("api.aspx?action=checkMove&username=" + username + "&password=" + password, function (data, status) {
+                if (status == "success") {
+                    if (data.length != 0) {
+                        if (data == "endgame") {
+                            goCheckMove = false;
+                            divMessage.innerHTML = "game ended";
+                            goBackToLobby();
+                        } else {
+                            var b = data.split("&");
+                            if (b.length == 11) {
+                                for (var i = 0; i < 9; i++) {
+                                    board[i] = parseInt(b[i]);
+                                }
+                                var isXturn = b[9] == "True";
+                                var moveCount = parseInt(b[10]);
+                                if (isXturn == amIx) {
+                                    divMessage.innerHTML = "your turn..";
+                                    goCheckMove = false;
+                                } else {
+                                    divMessage.innerHTML = "please wait for your partner";
+                                    goCheckMove = true;
+                                }
+                                drawBoard();
+                                if (goCheckMove)
+                                    setTimeout(function () { checkMove(); }, 500);
+                            }
                         }
-                        else {
-                            divMessage.innerHTML = (shouldSignup? "username taken - try again" : "login faild");
-                        }
-
+                    } else {
+                        //TODO: error message
                     }
-                    else {
-                        divMessage.innerHTML = "Network Error";
-                    }
-                });
-
+                } else {
+                    //TODO: error message
+                }
+            });
+        }
+        function drawBoard() {
+            var divBoard = document.getElementById("divBoard");
+            var divBoardHtml = '';
+            for (var i = 0; i < 9; i++) {
+                divBoardHtml += '<div id="divCell' + i + '" onclick="cellClick(' + i + ')" class="box" ' +
+                    (i == 3 || i == 6 ? 'style="clear:both;"' : '') + '><div style="margin-left:auto;margin-right: auto; margin-top:25px;width:55px;height:55px;">' +
+                    (board[i] == 0 ? '' : '<img style="width:55px;height:55px;" src="' +
+                    (board[i]==2 ? 'o.jpg' : 'x.jpg') + '" />') + '</div></div>';
             }
-
-            function choosePartner(partner) {
-                goGetPartners = false;
-                $('#divLobby').html('Please Wait...');
-                $.get('api.aspx?action=choosePartner&username=' + username + '&password=' + password + '&partner=' + partner, function (data, status) {
-                    if (status == 'success') {
-                        if (data == "ok") {
-                            $("#divLobby").hide();
-                            $("#divGame").show();
-                            divMessage.innerHTML = "You are now playing with " + partner;
-                        }
-                    }
-
-                });
+            divBoard.innerHTML = divBoardHtml;
+        }
+        function btnSignup(shouldSignup) {
+            var usr = $("#txtUserName").val();
+            var pswd = $("#txtPassword").val();
+            if (usr.length < 2 || pswd.length < 2) {
+                divMessage.innerHTML = "username and password must be at least two characters long";
+                return;
             }
-
-
-            var goGetPartners = true;
-
-            function getPartners() {
+            divMessage.innerHTML = "please wait...";
+            $.get("api.aspx?action="+(shouldSignup ? "signup" : "login")+"&username=" + usr + "&password=" + pswd, function (data, status) {
+                if (status == "success") {
+                    if (data == "ok") {
+                        divMessage.innerHTML = "welcome " + usr + "!";
+                        $("#txtUserName").val("");
+                        $("#txtPassword").val("");
+                        username = usr;
+                        password = pswd;
+                        $("#divLogin").hide();
+                        $("#divLobby").show();
+                        getPartners();
+                    } else {
+                        divMessage.innerHTML = shouldSignup ? "username taken. try again." : "login failed";
+                    }
+                } else {
+                    divMessage.innerHTML = "network error";
+                }
+            });
+        }
+        function choosePartner(partner) {
+            goGetPartners = false;
+            $("#divLobby").html("please wait");
+            $.get("api.aspx?action=choosePartner&username=" + username + "&password=" + password + "&partner=" + partner, function (data, status) {
+                if (status == "success") {
+                    if (data == "ok") {
+                        amIx = true;
+                        $("#divLobby").hide();
+                        $("#divGame").show();
+                        divMessage.innerHTML = "you are now playing with " + partner;
+                        goCheckMove = true;
+                        checkMove();
+                    }
+                }
+            });
+        }
+        var goGetPartners = true;
+        function getPartners() {
+            if (!goGetPartners)
+                return;
+            $.get("api.aspx?action=getPartners&username=" + username + "&password=" + password, function (data, status) {
                 if (!goGetPartners)
                     return;
-                $.get('api.aspx?action=getPartners&username=' + username + '&password=' + password, function (data, status) {
-                    if (!goGetPartners)
-                        return;
-                    if (status == "success") {
-                        if (data.startsWith("chosen")) {
-                            var chosenBy = data.substring(6);
-                            $("#divLobby").hide();
-                            $("#divGame").show();
-                            divMessage.innerHTML = "You are now playing with "+chosenBy;
-
-                        } else {
-                            var users = data.split('&');
-                            var divLobbyString = ""
-                            for (var i = 0; i < users.length; i++) {
-                                divLobbyString += '<div onclick="choosePartner(\'' + users[i] + '\')">' + users[i] + '</div>';
-                            }
-                            $('#divLobby').html(divLobbyString);
-                            if (goGetPartners)
-                                setTimeout(function () { getPartners(); }, 1000)
-                        }}
-                })
-                
-            }
-
-            function passwordKeyPressed(e) {
-                if (e.keyCode == 13)
-                    btnSignup(false);
-                return true;
-            }
-
-            function endGame() {
-                divMessage.innerHTML = "Please Wait...";
-                $.get("api.aspx?action=endGame&username=" + username + "&password=" + password, function () {
-                    if (status=="success") {
-                        $("#divGame").hide();
-                        $("#divLobby").show();
-                        goGetPartners = true;
-                        getPartners();
-                        divMessage.innerHTML = "Game Ended";
+                if (status == "success") {
+                    if (data.startsWith("chosen")) {
+                        var chosenBy = data.substring(6);
+                        $("#divLobby").hide();
+                        $("#divGame").show();
+                        divMessage.innerHTML = "you are now playing with " + chosenBy;
+                        amIx = false;
+                        goCheckMove = true;
+                        checkMove();
+                    } else {
+                        var users = data.split("&");
+                        var divLobbyString = "";
+                        for (var i = 0; i < users.length; i++) {
+                            divLobbyString += '<div onclick="choosePartner(\'' + users[i] + '\')">' + users[i] + '</div>';
+                        }
+                        $("#divLobby").html(divLobbyString);
+                        if (goGetPartners)
+                            setTimeout(function () { getPartners(); }, 1000);
                     }
-                });
-
-            }
-
+                }
+            });
+        }
+        function passwordKeyPressed(e) {
+            if (e.keyCode == 13)
+                btnSignup(false);
+            return true;
+        }
+        function goBackToLobby() {
+            $("#divGame").hide();
+            $("#divLobby").show();
+            goGetPartners = true;
+            getPartners();
+            divMessage.innerHTML = "game ended";
+        }
+        function endGame() {
+            divMessage.innerHTML = "please wait...";
+            $.get("api.aspx?action=endGame&username=" + username + "&password=" + password, function (data,status) {
+                if (status == "success") {
+                    goBackToLobby();
+                }
+            });
+        }
     </script>
 </head>
 <body onload="init()">
     <h1 style="text-align:center;">Tic Tac Toe</h1>
-    <div id="divMessage" style="width:500px;height:20px;margin:0 auto;text-align:center"></div>
+    <div id="divMessage" style="width:500px;height:20px;margin: 0 auto;"></div>
     <div id="divLogin" class="page">
         <h2>Login</h2>
-        UserName: <input type="text" id="txtUserName" /><br /><br />
+        Username: <input type="text" id="txtUserName" /><br /><br />
         Password: <input type="password" id="txtPassword" onkeypress="return passwordKeyPressed(event)" /><br /><br />
-        <input type="button" value="Signup" onclick="btnSignup(true)" />&nbsp;
-        <input type="button" value="Login" onclick="btnSignup(false)" />
+        <input type="button" value="signup" onclick="btnSignup(true)" />&nbsp;
+        <input type="button" value="login" onclick="btnSignup(false)" />
     </div>
     <div id="divLobby" class="page">lobby</div>
-    <div id="divGame" class="page">game
+    <div id="divGame" class="page">
+        <div id="divBoard" style="width:306px;height:306px;margin: 0 auto;background-image:url('tictactoe_board.jpg');background-size:306px 306px;"></div>
         <br />
-        <div id="divBoard"></div>
-        <button onclick="endGame()">End Game</button>
+        <button onclick="endGame()">end game</button>
     </div>
-    
-    
+
+
 </body>
 </html>

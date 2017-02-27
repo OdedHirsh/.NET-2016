@@ -94,6 +94,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="empty.jpg" />
+    <Content Include="o.jpg" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -110,7 +112,6 @@
     <Content Include="index.html" />
     <Content Include="JavaScript.js" />
     <Content Include="jquery-3.1.1.min.js" />
-    <Content Include="o.jpg" />
     <Content Include="tictactoe_board.jpg" />
     <Content Include="Web.config" />
     <Content Include="x.jpg" />
