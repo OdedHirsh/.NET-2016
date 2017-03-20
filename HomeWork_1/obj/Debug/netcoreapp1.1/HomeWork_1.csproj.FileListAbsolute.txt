@@ -1,0 +1,6 @@
+c:\users\hacker\documents\visual studio 2017\Projects\HomeWork_1\HomeWork_1\bin\Debug\netcoreapp1.1\HomeWork_1.deps.json
+c:\users\hacker\documents\visual studio 2017\Projects\HomeWork_1\HomeWork_1\bin\Debug\netcoreapp1.1\HomeWork_1.runtimeconfig.json
+c:\users\hacker\documents\visual studio 2017\Projects\HomeWork_1\HomeWork_1\bin\Debug\netcoreapp1.1\HomeWork_1.runtimeconfig.dev.json
+c:\users\hacker\documents\visual studio 2017\Projects\HomeWork_1\HomeWork_1\bin\Debug\netcoreapp1.1\HomeWork_1.dll
+c:\users\hacker\documents\visual studio 2017\Projects\HomeWork_1\HomeWork_1\obj\Debug\netcoreapp1.1\HomeWork_1.csprojResolveAssemblyReference.cache
+c:\users\hacker\documents\visual studio 2017\Projects\HomeWork_1\HomeWork_1\obj\Debug\netcoreapp1.1\HomeWork_1.AssemblyInfo.cs

@@ -1,0 +1,11 @@
+crate new project .net core
+add new Controller with the name of "USERSCONTROLLERS"
+add new "CLASS" named "USER"with 2 values = "User" & "Password"
+open a DB with a table with thses 2 values = "User" & "Password"
+1st method GET: return Users list
+2nd method GET: with User and return true/false
+3rd method POST: send User & Password return string of validation
+4th method PUT: will add new User to the DB with DB and return success or failur
+5th method DELETE: will delete User from DB after varification
+
+
