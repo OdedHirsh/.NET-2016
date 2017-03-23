@@ -1,0 +1,9 @@
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\bin\Debug\netcoreapp1.1\API_HomeWork1.deps.json
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\bin\Debug\netcoreapp1.1\API_HomeWork1.runtimeconfig.json
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\bin\Debug\netcoreapp1.1\API_HomeWork1.runtimeconfig.dev.json
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\bin\Debug\netcoreapp1.1\API_HomeWork1.dll
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\obj\Debug\netcoreapp1.1\API_HomeWork1.csprojResolveAssemblyReference.cache
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\obj\Debug\netcoreapp1.1\API_HomeWork1.AssemblyInfo.cs
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\bin\Debug\netcoreapp1.1\API_HomeWork1.pdb
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\obj\Debug\netcoreapp1.1\API_HomeWork1.dll
+C:\Users\oded\documents\visual studio 2017\Projects\API_HomeWork1\API_HomeWork1\obj\Debug\netcoreapp1.1\API_HomeWork1.pdb
