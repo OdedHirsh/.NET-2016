@@ -1,0 +1,9 @@
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\bin\Debug\netcoreapp1.1\Customers_API.deps.json
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\bin\Debug\netcoreapp1.1\Customers_API.runtimeconfig.json
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\bin\Debug\netcoreapp1.1\Customers_API.runtimeconfig.dev.json
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\bin\Debug\netcoreapp1.1\Customers_API.dll
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\obj\Debug\netcoreapp1.1\Customers_API.AssemblyInfo.cs
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\bin\Debug\netcoreapp1.1\Customers_API.pdb
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\obj\Debug\netcoreapp1.1\Customers_API.dll
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\obj\Debug\netcoreapp1.1\Customers_API.pdb
+c:\users\hacker\documents\visual studio 2017\Projects\Customers_API\Customers_API\obj\Debug\netcoreapp1.1\Customers_API.csprojResolveAssemblyReference.cache

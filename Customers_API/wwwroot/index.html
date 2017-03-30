@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.0.min.js" ></script>
+    <script>
+        function cancel() {
+            $("#firstName").val("");
+            $("#lastName").val("");
+            $("#phoneNUmber").val("");
+            $("#Email").val("");
+            $("#Birthdate").val("");
+        }
+
+        var tableString = "";
+
+        function drawTable() {
+            tableString = "";
+            for (var i = 0; i < 7; i++) {
+                if (i == 0) {
+                    tableString += " <table> < tr >";
+                }
+                tableString += "<td>Fist Name:"+""+ /></td>";
+
+            }
+
+
+            $("#divMain").html(tableString);
+
+        }
+        
+
+        function add() {
+            var customer = new Object();
+            customer.firstName = firstName.val;
+            customer.lastName = lastName.val;
+            customer.phoneNUmber = phoneNUmber.val;
+            customer.Email = Email.val;
+            customer.Birthdate = Birthdate.val;
+
+            $.ajax({
+                url: "/api/Customers",
+                type: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify(customer),
+                success: function (data) {
+                    if (data.Added = true) {
+
+
+
+                    } else {
+                        
+                    }
+                    
+                },
+                error: function (data) {
+                    
+                }
+            });
+
+
+            
+
+
+        }
+
+        function sendNewCustomer() {
+
+
+        }
+
+
+    </script>
+
+
+</head>
+<body>
+    <h3>These are your customers</h3>
+    <div id="divMain">This is Main table</div><br />
+    <div id="divAddRow">
+        <table>
+            <tr>
+                <td>Fist Name:<input type="text" id="firstName" style="width:100px;height:15px"/></td>
+                <td>Last Name:<input type="text" id="lastName" style="width:100px;height:15px"/></td>
+                <td>Phone Number<input type="text" id="phoneNUmber" style="width:100px;height:15px"/></td>
+                <td>Email:<input type="text" id="Email" style="width:100px;height:15px"/></td>
+                <td>Birth Date<input type="text" id="Birthdate" style="width:100px;height:15px" /></td>
+                <td><input id="btnAdd" type="button" value="Add" onclick="add()" /><input id="btnCancel" type="button" value="Cancel" onclick="cancel()" /></td>
+
+            </tr>
+        </table>
+
+    </div>
+    
+</body>
+</html>

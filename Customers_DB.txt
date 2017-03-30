@@ -1,0 +1,11 @@
+CREATE TABLE [dbo].[Customers] (
+    [CustomerID] INT           IDENTITY (1, 1) NOT NULL,
+    [FirstName]  VARCHAR (20)  NOT NULL,
+    [LastName]   VARCHAR (20)  NOT NULL,
+    [PhonNumber] VARCHAR (20)  NOT NULL,
+    [Email]      NVARCHAR (50) NOT NULL,
+    [Active]     BIT           NOT NULL,
+    [BirthDate]  INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([CustomerID] ASC)
+);
+
