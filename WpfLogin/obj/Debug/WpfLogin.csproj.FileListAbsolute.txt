@@ -1,0 +1,14 @@
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\bin\Debug\WpfLogin.exe.config
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\bin\Debug\WpfLogin.exe
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\bin\Debug\WpfLogin.pdb
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\WpfLogin.csprojResolveAssemblyReference.cache
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\MainWindow.g.cs
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\App.g.cs
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\WpfLogin_MarkupCompile.cache
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\WpfLogin_MarkupCompile.lref
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\MainWindow.baml
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\WpfLogin.g.resources
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\WpfLogin.Properties.Resources.resources
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\WpfLogin.csproj.GenerateResource.Cache
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\WpfLogin.exe
+c:\users\hacker\documents\visual studio 2017\Projects\WpfLogin\WpfLogin\obj\Debug\WpfLogin.pdb
