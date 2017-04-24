@@ -1,0 +1,14 @@
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\bin\Debug\WpfCanvas.exe.config
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\bin\Debug\WpfCanvas.exe
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\bin\Debug\WpfCanvas.pdb
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\WpfCanvas.csprojResolveAssemblyReference.cache
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\MainWindow.g.cs
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\App.g.cs
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\WpfCanvas_MarkupCompile.cache
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\WpfCanvas_MarkupCompile.lref
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\MainWindow.baml
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\WpfCanvas.g.resources
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\WpfCanvas.Properties.Resources.resources
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\WpfCanvas.csproj.GenerateResource.Cache
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\WpfCanvas.exe
+c:\users\hacker\documents\visual studio 2017\Projects\WpfCanvas\WpfCanvas\obj\Debug\WpfCanvas.pdb
