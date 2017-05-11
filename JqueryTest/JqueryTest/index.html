@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    
+<script src="jquery-3.2.0.min.js"></script>
+    <title></title>
+
+    <script>
+        $().ready(function () {
+            
+
+            $(".Blue").mouseover(function () {
+                $(this).css("background-color", "blue");
+            });
+            
+            $(".Blue").mouseout(function () {
+                $(this).css("background-color", "white");
+            });
+
+            $(".Red").mouseover(function () {
+                    $(this).css("background-color", "red");
+            });
+            
+            $(".Red").mouseout(function () {
+                $(this).css("background-color", "white");
+            });
+
+            $(".Bigger").mouseover(function () {
+                    $(this).css("font-size", "50px");
+            });
+
+            $(".Bigger").mouseout(function () {
+                $(this).css("font-size", "30px");
+            });
+            $(".Fade").mouseover(function () {
+                $(this).fadeTo("fast",0.2);
+            });
+
+            $(".Fade").mouseout(function () {
+                $(this).fadeTo("fast", 1.0);
+            });
+
+            $(".Cock").mouseover(function () {
+                $(this).html("Uzi suck balls");
+            });
+
+            $(".Cock").mouseout(function () {
+                $(this).html("its true ;) ");
+            });
+            });
+       
+
+    </script>
+
+
+</head>
+<body style="font-family:'Comic Sans MS';font-size:30px" >
+    <div class="Blue" style="display:inline-block"> this wil be blue</div>
+    <br /><br />
+    <div class="Red" style="display:inline-block"> this wil be red</div>
+    <br /><br />
+    <div class="Bigger" style="display:inline-block;">this will be bigger</div>
+    <br /><br />
+    <div class="Fade" style="display:inline-block;">this will fade</div>
+    <br /><br />
+    <div class="Cock" style="display:inline-block;">this will suck cock</div>
+    <br /><br />
+    <div class="New" style="display:inline-block;">this is newk</div>
+</body>
+</html>
