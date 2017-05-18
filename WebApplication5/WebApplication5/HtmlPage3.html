@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS Services</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myController">
+        <button ng-click="btnClick()">click me</button>
+        
+        <p>{{label}}</p>
+
+    </div>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("myController", function ($scope, $http) {
+            $scope.label = "";
+            $scope.btnClick = function () {
+                $http.get("api.aspx?firstName=Elad").then(function (response) {
+                    $scope.label = response.data;
+                });
+            };
+        });
+    </script>
+</body>
+</html>

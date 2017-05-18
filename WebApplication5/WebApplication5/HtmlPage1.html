@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS</title>
+    <script src="angular.min.js"></script>
+    <style>
+        th, td, table {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="app" ng-controller="controller1">
+        <table style="border-collapse: collapse;">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="person in persons">
+                <td>{{person.firstName}}</td>
+                <td>{{person.lastName}}</td>
+                <td>{{person.age}}</td>
+                <td><input type="button" value="delete" ng-click="deletePerson($index)" /></td>
+                <td><input type="button" value="update" ng-click="updatePerson($index)" /></td>
+            </tr>
+        </table>
+        <div>
+            First Name: <input type="text" ng-model="firstName" />
+            <br/>
+            Last Name: <input type="text" ng-model="lastName" />
+            <br />
+            Age: <input type="number" ng-model="age" />
+            <br />
+            <input ng-hide="updateMode" type="button" value="add" ng-click="addPerson()" />
+            <input ng-show="updateMode" type="button" value="update" ng-click="saveUpdate()" />
+        </div>
+    </div>
+    <script>
+        var app = angular.module("app", []);
+        app.run(function ($rootScope) {
+            $rootScope.counter = 0;
+        });
+        app.controller("controller1", function ($scope) {
+            $scope.persons = [{ firstName: "Elad", lastName: "Lavi", age: 36 }];
+            $scope.updateMode = false;
+            $scope.editedPerson = -1;
+            $scope.addPerson = function () {
+                $scope.persons.push({ firstName: $scope.firstName, lastName: $scope.lastName, age: parseInt($scope.age) });
+                $scope.firstName = "";
+                $scope.lastName = "";
+                $scope.age = "";
+            };
+            $scope.saveUpdate = function () {
+                $scope.persons[$scope.editedPerson].firstName = $scope.firstName;
+                $scope.persons[$scope.editedPerson].lastName = $scope.lastName;
+                $scope.persons[$scope.editedPerson].age = $scope.age;
+                $scope.updateMode = false;
+                $scope.editedPerson = -1;
+                $scope.firstName = "";
+                $scope.lastName = "";
+                $scope.age = "";
+            }
+            $scope.deletePerson = function (i) {
+                $scope.persons.splice(i,1);
+            };
+            $scope.updatePerson = function (i) {
+                $scope.firstName = $scope.persons[i].firstName;
+                $scope.lastName = $scope.persons[i].lastName;
+                $scope.age = $scope.persons[i].age;
+                $scope.updateMode = true;
+                $scope.editedPerson = i;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS Filters</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myController">
+
+        <p>{{firstName | uppercase}}</p>
+        <!--<ul>
+            <li ng-repeat="name in names | filter:search">{{name.firstName + ' ' + name.lastName}}</li>
+        </ul>
+        -->
+        <table>
+            <tr><td ng-click="orderByField('firstName')">First Name</td><td ng-click="orderByField('lastName')">Last Name</td></tr>
+            <tr ng-repeat="name in names | orderBy:orderByFieldName"><td>{{name.firstName}}</td><td>{{name.lastName}}</td></tr>
+        </table>
+        <input type="text" ng-model="search" />
+    </div>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("myController", function ($scope) {
+            $scope.orderByFieldName = "firstName";
+            $scope.firstName = "Elad";
+            $scope.names = [{ firstName: 'Elad', lastName: 'Lavi' }, { firstName: 'Yuval', lastName: 'Marcus' }, { firstName: 'Uzi', lastName: 'Cohen' }];
+            $scope.orderByField = function (fieldName) {
+                $scope.orderByFieldName = fieldName;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Learning AngularJS</title>
+    <script src="angular.min.js"></script>
+    
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="controller1" ng-init="firstName='Yuval'">
+        <p>
+            First Name: <input type="text" ng-model="firstName" />
+            Last Name: <input type="text" ng-model="lastName"/>
+        </p>
+        <p>
+            <span ng-click="clickFirstName()" ng-bind="firstName"></span>
+            <span ng-bind="lastName"></span>
+        </p>
+        <p>
+            {{firstName + ' ' + lastName}}
+            <br/>
+            {{5 + 5}}
+            <br/>
+            {{fullName()}}
+        </p>
+        <p>
+            <ul>
+                <li ng-repeat="name in names">{{name.firstName + ' ' + name.lastName}}</li>
+            </ul>
+        </p>
+        <input ng-click="btnClick()" type="button" value="click me" />
+
+    </div>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("controller1", function ($scope) {
+            //$scope.firstName = "Elad";
+            $scope.lastName = "Lavi";
+            $scope.names = [{ firstName:'Elad', lastName:'Lavi'}, { firstName:'Yuval', lastName: 'Marcus'}, { firstName: 'Uzi', lastName:'Cohen'}];
+            $scope.clickFirstName = function () {
+                $scope.lastName = $scope.lastName + 'a';
+            }
+            $scope.fullName = function () {
+                return $scope.firstName + ' ' + $scope.lastName;
+            }
+            $scope.btnClick = function () {
+                var p = { firstName: 'Kris', lastName: 'Yakub' };
+                $scope.names.push(p);
+            }
+        });
+
+    </script>
+</body>
+</html>
