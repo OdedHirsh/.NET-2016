@@ -9,18 +9,32 @@
     <div ng-app="myApp" ng-controller="myController">
 
         <p>{{firstName | uppercase}}</p>
-        <!--<ul>
-            <li ng-repeat="name in names | filter:search">{{name.firstName + ' ' + name.lastName}}</li>
-        </ul>
-        -->
+       
+        
         <table>
             <tr><td ng-click="orderByField('firstName')">First Name</td><td ng-click="orderByField('lastName')">Last Name</td></tr>
             <tr ng-repeat="name in names | orderBy:orderByFieldName"><td>{{name.firstName}}</td><td>{{name.lastName}}</td></tr>
         </table>
-        <input type="text" ng-model="search" />
+        <input type="text" ng-model="search"/>
+        <ul>
+            <li ng-repeat="name in names | filter:search">{{name.firstName + ' ' + name.lastName}}</li>
+        </ul>
+
+        <ul>
+            <li ng-repeat="name in names | limitTo:2">{{name.firstName | reveseChars}}</li>
+        </ul>
     </div>
     <script>
         var myApp = angular.module("myApp", []);
+        myApp.filter("reveseChars", function () {
+            return function (value) {
+                var result = "";
+                for (var i = 0; i < value.length; i++) {
+                    result += value[value.length - i - 1];
+                }
+                return result;
+            };
+        });
         myApp.controller("myController", function ($scope) {
             $scope.orderByFieldName = "firstName";
             $scope.firstName = "Elad";
@@ -28,6 +42,7 @@
             $scope.orderByField = function (fieldName) {
                 $scope.orderByFieldName = fieldName;
             }
+            $scope.search = "search";
         });
     </script>
 </body>
