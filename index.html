@@ -1,41 +1,28 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
     <title></title>
-	<meta charset="utf-8" />
-    <script src="scripts/jquery-3.1.1.min.js"></script>
     <script>
-
-        var video;
-       function init() {
-            video = document.getElementById("video");      
-            $("#divVideoList").html("Please wait...");
-            $.get("video server.aspx", function (data, status) {
-                if (status == "success") {
-                    var videos = data.split("&");
-                    var str = "<table>";
-                    for (var i = 0; i < videos.length; i++)
-                        str += "<tr><td>" + videos[i] + "</td><td><input type='button' value='play' onclick='playVideo("+i+")' /></td></tr>";
-                    str += "</table>";
-                    $("#divVideoList").html(str);
+        function btnUpload() {
+            var fileToUpload = document.getElementById("fileToUpload");
+            if (fileToUpload.files.length == 1) {
+                var file = fileToUpload.files[0];
+                console.log("file size: " + file.size);
+                if (window.File && window.FileReader && window.FileList && window.Blob) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var content = e.target.result;
+                        console.log(content);
+                    };
+                    reader.readAsText(file);
                 }
-            });
+            }
         }
-        
-        
-        function playVideo(i) {
-            $("#divVideo").html('<video id="video" width="400" height="300" autoplay controls><source id="videoSource" src="videos/Video' + (i+1) + '.mp4" type="video/mp4"/></video>');
-        }
-
-
-
     </script>
-
 </head>
-<body onload="init()">
-    <div id="divVideoList"></div>
-    <div id="divVideo"></div>
-    
-   
+<body>
+    <input type="file" id="fileToUpload"/>
+    <input type="button" value="upload" onclick="btnUpload()"/>
 </body>
 </html>
